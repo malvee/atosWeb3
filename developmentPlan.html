@@ -28,48 +28,29 @@
 			
 		</div>
 
-		<div class = "col-lg-10" style = "margin-left: 5em; margin-right: 5em;">
-				<h1>Description of prototypes</h1>
-				After a couple of client and team meetings, the creation of a simple prototype was decided in order to create a usable application before developing the algorithms for the final version of the application.The team decided to make the prototype ready by end of term one (December 12, 2014). This is what the prototype must include:<br><br>
-				<table>
-					<tr>
-						<td>
-							<ul>
-								<li>4 buttons that each represent sentimentally analysed GOOD, BAD, NEUTRAL and ALL tweets.</li>
-								<li>These buttons shouldn't neccessarily be functional.</li>
-								<li>Display of real-time tweets fetched from Twitter.</li>
-								<li>Colour-coding the tweets that are fetched from Twitter.</li>
-								<li>An elegant and user-friendly UI design that respects Norman's principles.</li>
-								<li>Use of PHP to develop the end of term prototype.</li>
-							</ul>
-						</td>
-						<td>
-							<img style="width: 40em; height: 15em" src="proto1.jpg">
-						</td>
-					</tr>
-				</table>
+		<div class = "col-lg-10" style = "margin-left: 5em; margin-right: 5em; margin-bottom: 7em;">
+				<h1>Collaboration Opportunities</h1>
+				Right now the application is entirely based on Twitter's data stream. It is possible to include other social media platforms such as Facebook etc. This will require making use of the respective social media apis' and incorporate them with the existing codebase of this application. The way this application is structured does allow these types of extension, since we are primarily focused on textual sentiment analysis; any platform that primarily uses text can be used. This sort of further development has been discussed in the technical documentaion but specific details have not been provided as to how one might approach to include a new social media platform along with the current one. We leave it up to to future developers to proceed as they feel is best suited and reading through the technical documentation will give a good understanding to how the current system is structed and the way everything fits together. 
+				<br><br>
+				The other major area of development is in the algorithm for sentiment analysis. The developer can add more data and re-train the model and also change how the algorithm works completely. This has been detailed in the technical documentation and explains how one can make changes to the algorithm and re-train the model with more data.
+				 <br>
+				<h1>Iterations</h1>
+				We went through 6 phases of different approach to sentiment-analysis from the start of this application. UI changes took place throughout the lifecycle of the entire application and thus we only discuss the core-algorithm changes.<br><h3>Phase-1 DatumBox:</h3> In term-1 for the majority of the time we were concered with getting the data from twitter, setting up the wire-frame and coding the front end UI. Nearing the last few sprints we focused on finding a good sentiment analysis api that would classify a string with a sentiment. We chose DatumBox and we were able to implement and incorporate it in the application. However, the performance of DatumBox was average, the classification of texts were acceptable but the network bottleneck was the major problem. Since DatumBox was an "one-pass" api we had to make individual http REST request for each of the tweets. At that time we were displaying 30 tweets per page  and thus we had to make 30 requests. Depending on the server load this entire process took about 10-15 seconds meaning eveytime the user accessed the application it would take 10-15 seconds for the application to display the information. This delay wasn't acceptable and we needed the performance to be instantaneous i.e. under 2 second maximum. 
+				<h3>Phase-2 Local DatumBox:</h3>
+				We realised that the shortcoming of the DatumBox api was the one call per request problem. We thought hat if we could setup the code that does the sentiment analysis locally not only would that drastically boost the performance we could possible extend the algorithm too. The problem is that even though the api is open-source the source code doesnt actually build and work. Some problems were that calls were being made to classes that didnt actually exist and some classes made calls to the online api itself and thus even if we got the code to work it would still be the same network bottleneck. Struggling with this we decided to drop the idea of having DatumBox run locally.
+				<h3>Phase-3 Batch API:</h3>
+				The major problem with the batch apis (<a href= "http://sentiment.vivekn.com/docs/api/">vivikn</a>, <a href= "https://semantria.com/">Semantria</a>) were that they didnt actually improve the performance to the level that we wanted, even though we would be making one http REST call the time it took for the server to analyze the data and send it back was typically around 8-10 seconds. There was a sight improvement but it was not worth the effort.
+				 <h3>Phase-3 Bag of Words Part-1:</h3>
+				 We realised that the only way to make the application perform to the level we wanted was to write our own sentiment analysis algorithm. We discussed a few of the algorithms with our client and were suggested to go with Bag of words as the algorithm isnt overly complicated and its simple structure will allow us to tweak different parts to try to improve the accuracy. We contacted a machine learning expert, <a href = "http://machinelearningmastery.com/">Jason Brownlee</a>. His advice was to collect and make use of data specifically suited for the problem. There were existing datasets online such as the <a href = "http://archive.ics.uci.edu/ml/">UCI Machine Learning repository</a> but most of them were about movie ratings etc and were not related to our problem. We took Mr Jason's advice contacted our client and informed him that we are going to collect about 1000 tweets, read-through each of them and manually label them. We had to make sure that the client was on-board with this idea as it was going to take some time and is a critical decision in the overall project. Having the labelled training data-set ready we wrote the first draft of the algorithm and it had an accuracy of 51% (tested over 200 tweets from the testing data set). The initial accuracy was not so impressive but performance was ideal. Load up time reduced to under 1 second in most cases. The client was happy with the performance but suggested that we look for ways to improve the accuracy.
+				 <h3>Phase-4 Bag of Words Part-2:</h3>
+				 We now used a "Participation Percentage" parameter to determine the sentiment of the word. We modified the way in which wach word is labelled but the overall algorithm stayed the same. In addition we added positive and negative "word-banks" and also modified the code that trained the model to exclude <a href = "http://en.wikipedia.org/wiki/Stop_words">stop-words</a>. These changes made a drastic difference to the overall accuracy. The final trained model and algorithm has an accuracy of 81% (tested over 200 tweets from the testing data set). We tried tweaking different parts of the code such as using linear regression to determine the thresholds used to determine the sentiment of the string (the sentiment of the string depends on the sentiment of each individual words in the string). We are fairly happy with the results from this and kept it as the final working version on the application.
+				 <h3>Phase-5 Stanford NLP library:</h3>
+				 
+
+
 			
-				<br>
-				The final application should include the following:<br><br>
-				<table>
-					<tr>
-						<td>
-							<ul>
-								<li>4 buttons that each represent sentimentally analysed GOOD, BAD, NEUTRAL and ALL tweets.</li>
-								<li>These buttons must be fully functional.</li>
-								<li>Display of real-time tweets fetched from Twitter along with username, location and date of the tweets.</li>
-								<li>Searching capability on the basis of date, location and keywords.</li>
-								<li>An elegant and user-friendly UI design that respects Norman’s principles.</li>
-								<li>An algorithm to perform the sentiment analysis.</li>
-								<li>Use of Django to develop the application.</li>
-							</ul>
-						</td>
-						<td>
-							<img style="width: 40em; height: 15em" src="proto2.jpg">
-						</td>
-					</tr>
-				</table>
-			</p>
+				
+			
 		</div>
 
 
