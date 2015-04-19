@@ -30,56 +30,27 @@
 	</div>
 
 	
-	<div class = "col-lg-10" style = "margin-left: 5em; margin-right: 5em;">
+	<div class = "col-lg-10" style = "margin-left: 5em; margin-right: 5em; margin-bottom: 7em;">
 		
-		<h1>Research - Topics searched and found</h1>
-		
-		<ol>
-			<h2>APIs</h2>
-			APIs for various social platforms were identified in the first sprint. They all support HTTP REST protocol so that any programming language can make and retrieve requests.<br>
-			<ol>
-				<h3>Twitter</h3> The Twitter micro-blogging service provides two RESTful APIs. The Twitter REST API methods allow developers to access core Twitter data. This includes update timelines, status data and user information. The search API methods allow developers to interact with Twitter search and trends data. The APIs currently support following data formats: XML, JSON, RSS and the Atom syndication formats. The four main objects that are encountered in the API are Tweets, Users, Entities and Places. Resources were identified for various programming languages:
-				<ul>
-					<li>Java - hbc library, temboo library</li>
-					<li>C++ - twirlcurl</li>
-					<li>JavaScript/Node.js - twitterJSclient library</li>
-				</ul>
-				
-				<h3>Facebook</h3> The Facebook API is a platform for building applications available to the members of this social network. The API allows applications to become more user-centered by publishing activities to news feed and user profile by using social connections and profile information (SUBJECT TO USER PRIVACY SETTINGS). Users can add social context to applications by utilizing profile, friends, page, group, photo and event data. The API uses RESTful protocol and responses are localized in XML format. 
-				
-				<h3>Youtube</h3> The problem with Youtube is it does not have hashtag searching so searches cannot be made on comments or video description. Only the basic keyword youtube search can be done which returns a list of videos with best match. Youtube has two relavant APIs : Data API and Analytics API. The YouTube Data API (v3) lets incorporate YouTube functionality into own application. The API can be used to fetch search results and to retrieve, insert, update, and delete resources like videos or playlists. There is a "search.list" method in Data API but it only allows searching through keywords and returns a list of videos. The analytics API allows viewing statistics, popularity metrics, and demographic information for YouTube videos and channels but this is not quite relevant to the project. 
-				
-				<h3>Instagram</h3> -  The Instagram API allows searching for photos by hashtags, supports REST request through api.instagram.com endpoint and JSON response and uses OAuth 2.0 protocol for authentication. 
-			</ol>
-			
-			<h2>Test Data</h2>
-			To access the Twitter API, an open source python library Tweepy was used. An application on the Twitter Developer website was created to generate the ckey, csecret, atoken and asecret required to achieve Application-only Authentication. The test data includes about 500 tweets about UK rail operators which include @VirginTrains, @LondonMidland,@GNRailUK, @greateranglia, @c2c_Rail, @EMTrains, @chilternrailway, @FGW, @SW_Trains, @TLRailUK, @SouthernRailUK, @Se_Railway.
-			
-			
-			<h2>UI Main Page</h2> 
-			The UI Main Page was developed using a Bootstrap tutorial on Youtube : <a href="https://www.youtube.com/watch?v=YXVoqJEwqoQ"> https://www.youtube.com/watch?v=YXVoqJEwqoQ </a>. Subsequent changes were made to the HTML5 and CSS code to achieve functionalities according to the user requirements. 
+		<h1>Technical Achievement</h1>
+		The biggest technical achievement that we have is the bag of words algorithm which was made from scratch. The entire algorithm along with all the files related to the algorithm is self-contained within 15 files.<br> The code base is fairly complex with over 2400 hundred line of hand written code. Handling javascript within php within html becomes a bit trick and managing " and ' becomes very confusing and frustrating. The mix-up of " and ' while being passed to and from javascript and php caused the missing box problem where the container for a tweet would appear empty but upon inspecting the html element we could see the tweet but it wouldn't appear as it had clashed previously with a matching " or ' or unescaped \. These were minor difficulties but painful and annoying nontheless. <br>
+		We worked with twitters streaming and search api, the streaming api is used to collect the training data and the search api is used in the application to fetch the recent tweets. On each tweet we have to do some processing to output it in the format that we want such as link recognition and rendering emoji used in the tweets via the twemoji library. We use a seperate function to convert the date returned by twiter for each tweet into something more redable such as 1 min ago or 9 hours ago etc. The main difficulty in this application was the sentiment analysis algorithm on which we spent a considerbale amount of time on, tweaking and experimenting to try to increase its accuracy and at the same time make sure it is not being over-trained and can generalise well. We also introduced the "add-and-delete" functionality in the settings page. The user can delete and add multiple topics simultaneously, for example he user could delete 5 topics and add 10 more in one go. Traditional add and delete mechanism would have the user delete and elements one at a time.    
+		<h1>Working and Technical Details</h1>
+		When the user goes to the application url they are prompted with a login screen, here the user has to  enter the username and password and this will be authenticated agaisnt an online databse. If the authentication is successfull the user is taken to the main page where the server looks up the username in the databse and retrieves the set of 100 tweets that the user has specified they are interested in. These 100 tweets are then analysed by the bag of words algorithm and each is given a sentiment and a score. Depending on the sentiment and the score a color is chosen for the container in which the tweet is going to be displayed. The tweet is parsed to identify inks and emoji and these are rendered properly. The profile picture and time of tweet is displayed too. 
+		<br> The technical details of the entire working of the application have been explained in-depth in the technical documentation including explanation of each file, its part in the overall application, how to extend the algorithm or re-train the model etc.
+		<h1>Sources</h1>
+		Bag of Words
+		<ul>
+			<li>  <a href = "http://en.wikipedia.org/wiki/Bag-of-words_model">http://en.wikipedia.org/wiki/Bag-of-words_model</a></li>
+			<li>  <a href = "https://www.youtube.com/watch?v=iGZpJZhqEME">https://www.youtube.com/watch?v=iGZpJZhqEME</a></li>
+			<li>  <a href = "https://www.youtube.com/watch?v=QqT7fPVh2yE">https://www.youtube.com/watch?v=QqT7fPVh2yE</a></li>
+			 <li>  This is the one that was most helpful <a href = "https://www.youtube.com/watch?v=ytUHvMNnzZk">https://www.youtube.com/watch?v=ytUHvMNnzZk</a></li>
 
-			
-			<h2>Django</h2>
-			Django is a high level Python Web framework. It helps in building high-performing, elegant Web applications quickly because of focus on automation and DRY (Don't Repeat Yourself) principle. Some interesting Django features are:
-			<ul>
-				<li>Object-relational Mapper - Data models are defined completely in Python and there is also a rich, dynamic-database access API.</li>
-				<li>Elegant URL design - Django provides neatly designed URLs with no framework-specific limitations. </li>
-				<li>Template system - Django has a powerful, extensible and design-friendly template language to separate design, content and Python code. Data models are defined completely in Python and there is also a rich, dynamic-database access API. </li>
-				<li>Cache system - Performance is increased by hooking into memcached or other cache frameworks. </li>
-				<li>Internationalization -Django supports multi-language applications by allowing specification of translation strings and linking language-specific functionalities.</li>
-				<li>Sites like Instagram, Mozilla, OpenStack, Pinterest, etc. have had tremendous success with Django and the team expects the same with this project as well.</li>
-			</ul>
-			
-			<h2>Sentiment Analysis</h2> 
-			The team looked at various APIs like<a href = "https://bigml.com/developers/" target="_blank"> BigML</a>, <a href = "https://cloud.google.com/prediction/docs"  target="_blank"> Google Prediction API</a>, <a href = "https://www.viralheat.com/solutions/social-media-monitoring/"  target="_blank"> ViralHeat</a> etc that could be used to perform sentiment analysis on tweets. Some of the APIs were not open-source and some were complicated to the extent that limited the team from achieveing protoype completion. A perfect balance was spotted in <a href = "http://www.datumbox.com/" target="_blank">DatumBox</a>. It is open-souce and has a dedicated twitter sentiment analysis API. The API is very simple and extremely powerful to implement. 
-			
-			<h2>PHP</h2> 
-			The DatumBox API is supported to work with PHP and since the team is well known with back-end PHP development, the prototype was finished comfortably well within time. This meant that there was no need to learn a brand new or over-complicated technology stack. Hence the choice of PHP for handling all back-end tasks and to display dynamic data for the application was appropriate. The team also looked at PHP web frameworks such as Laravel but at such a late phase of prototype development Laravel would not have made it easier or added any special features. So the choice of working with simple and effective PHP coding without the use of any frameworks was also appropriate. 
-			<br><br><br><br><br><br>
-			
-		</ol>
-
+		</ul>
+		<a href = "http://nlp.stanford.edu/sentiment/">Stanford NLP Library </a> <br>
+		<a href = "http://sentiment.vivekn.com/docs/api/">Batch Api</a><br>
+		<a href= "http://www.datumbox.com/">DatumBox </a>
+		<h1><a href = "Technical documentation.odt">System/Technical Documentation</a></h1>
 	</div>
 	
 
