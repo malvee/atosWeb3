@@ -5,57 +5,70 @@
 	<meta name = "viewport" content = "width= device-width, initial-scale=1.0">
 	<link href  = "css/bootstrap.min.css" rel = "stylesheet">
 	<link href  = "css/styles.css" rel = "stylesheet">
+	<link href  = "css/enableJustify.css" rel = "stylesheet">
 </head>
 <body background= "background.jpg">
 	<div class = "navbar navbar-default navbar-static-top">
 		<div class = "container">
-
 			<a href = "index.html" class = "navbar-brand" class = "active">
-				<!--<img class = "navbar-brand" class = "active" style="padding: 0.5em;width: 5em; height: 3.8em; float: left; margin-top: -1.25em" src="logo.jpg">-->
 				<img class = "navbar-brand" class = "active" style="padding: 0.3em;width: 4.5em; height: 3.5em; float: left; margin-top: -1.25em" src="logo.jpg">
 			</a>
-			
 			<a href = "team.html" class = "navbar-brand" class = "active">Team</a>
-			<a href = "bagOfWords/" class = "navbar-brand" class = "active">Project</a>
+			<a href = "http://atosrail.azurewebsites.net/bagOfWords/" class = "navbar-brand" class = "active">Project</a>
 			<a href = "requirementsBackground.html" class = "navbar-brand" class = "active">Requirements</a>
 			<a href = "documentation.html" class = "navbar-brand" class = "active">Documentation</a>
 			<a href = "developmentPlan.html" class = "navbar-brand" class = "active">Development Plan</a>
-			
 			<a href = "archive.html" class = "navbar-brand" class = "active">Archive</a>
 			<a href = "testing.html" class = "navbar-brand" class = "active">Testing</a>
 			<a href = "forum.html" class = "navbar-brand" class = "active">Forum</a>
-
-
 		</div>
-		
 	</div>
 
 	
-	<div class = "col-lg-9" style = "margin-left: 9em; margin-right: 5em; margin-bottom: 7em;">
+	<div class = "col-lg-10" style = "margin-left: 9em; margin-right: 5em; margin-bottom: 7em;">
 		
+		
+
+
 		<h1>Technical Achievements</h1>
-		The biggest technical achievement that we have is the bag of words algorithm which was made from scratch. The entire algorithm along with all the files related to the algorithm is self-contained within 15 files.<br> The code base is fairly complex with over 2400 hundred line of hand written code. Handling javascript within php within html becomes a bit trick and managing " and ' becomes very confusing and frustrating. The mix-up of " and ' while being passed to and from javascript and php caused the missing box problem where the container for a tweet would appear empty but upon inspecting the html element we could see the tweet but it wouldn't appear as it had clashed previously with a matching " or ' or unescaped \. These were minor difficulties but painful and annoying nontheless. <br>
-		We worked with twitters streaming and search api, the streaming api is used to collect the training data and the search api is used in the application to fetch the recent tweets. On each tweet we have to do some processing to output it in the format that we want such as link recognition and rendering emoji used in the tweets via the twemoji library. We use a seperate function to convert the date returned by twiter for each tweet into something more redable such as 1 min ago or 9 hours ago etc. The main difficulty in this application was the sentiment analysis algorithm on which we spent a considerbale amount of time on, tweaking and experimenting to try to increase its accuracy and at the same time make sure it is not being over-trained and can generalise well. We also introduced the "add-and-delete" functionality in the settings page. The user can delete and add multiple topics simultaneously, for example he user could delete 5 topics and add 10 more in one go. Traditional add and delete mechanism would have the user delete and elements one at a time.    
-		<h1>Working and Technical Details</h1>
-		When the user goes to the application url they are prompted with a login screen, here the user has to  enter the username and password and this will be authenticated agaisnt an online databse. If the authentication is successfull the user is taken to the main page where the server looks up the username in the databse and retrieves the set of 100 tweets that the user has specified they are interested in. These 100 tweets are then analysed by the bag of words algorithm and each is given a sentiment and a score. Depending on the sentiment and the score a color is chosen for the container in which the tweet is going to be displayed. The tweet is parsed to identify inks and emoji and these are rendered properly. The profile picture and time of tweet is displayed too. 
-		<br> The technical details of the entire working of the application have been explained in-depth in the <a target="_blank" href = "Technical documentation.pdf">technical documentation </a> including explanation of each file, its part in the overall application, how to extend the algorithm or re-train the model etc.
+		<p>The biggest technical achievement has been implementation of the Bag Of Words algorithm from scratch. The entire algorithm along with all the related files is self-contained within 15 files. The code base is fairly complex with over 2400 hundred lines of hand written code.</p> 
+		<p>Handling JavaScript and HTML 5 inside PHP became a bit tricky. This was because managing " and ' symbols became very confusing and frustrating. The mix-up of " and ' while being passed to and from JavaScript and PHP caused the missing box problem where the container for a tweet would appear empty but upon inspecting the HTML 5 element inside a browser, it was observed that the tweet was present but it wasn't appearing because it had clashed with a previously matched " or ' or unescaped \. These were minor difficulties but nontheless painful and annoying.</p>
+		<p>We worked with Twitter's Streaming and Search APIs. The Streaming API was used to collect the training data for the algorithm and the Search API is used in the application to fetch recent tweets.</p>
+		<p>Each tweet was required to be displayed in a specific format. This format included rendering emoticons and hyperlinks within the tweet text and converting the timestamp of the tweet into a readable format (like 1m ago, 2h ago etc.). The Twemoji library was used to render emoticons and self-written functions were used to achieve hyperlink rendering and easy-to-read date format.</p>
+		<p>The main difficulty in this application was the sentiment analysis algorithm on which we spent a considerbale amount of time on, tweaking and experimenting to try to increase its accuracy and at the same time make sure it is not being over-trained and can generalise well.
+		<p>Another interesting achievement was the dynamic Control Panel where the user can add and delete multiple topics simultaneously. For example he user could delete 5 topics and add 10 more in one go. This is a major advantage over traditional add and delete mechanism where user would have to add and delete elements one at a time.    
+		<h1>Implementation Details</h1>
+		<p>When the user goes to the application url, he/she is prompted with a login screen where username and password have to be entered. This will be authenticated agaisnt an online databse. If the authentication is successfull the user is taken to the main page where the server looks up the entered username in the databse and retrieves a set of 100 tweets specific to the user's interest. </p>
+		<p>These 100 tweets are then analysed by the Bag Of Words algorithm and each tweet is given a sentiment and a score. Depending on the sentiment and score each tweet container is given a sentiment colour and sentiment shade respectively. The tweet is also parsed to identify hyperlinks and emoticons. These are displayed in the tweet text along with profile picture of the tweet author and time elapsed since tweet creation.</p>
+		Comprehensive technical details of the entire application can be found in the <a target="_blank" href = "Technical documentation.pdf">Technical Documentation </a> including explanation of each file, its part in the overall application and how to extend the algorithm or re-train the model etc.
 		<h1>Use of Design Patterns</h1>
-		The biggest technical achievement that we have is the bag of words algorithm which was made from scratch. The entire algorithm along with all the files related to the algorithm is self-contained within 15 files.<br> The code base is fairly complex with over 2400 hundred line of hand written code. Handling javascript within php within html becomes a bit trick and managing " and ' becomes very confusing and frustrating. The mix-up of " and ' while being passed to and from javascript and php caused the missing box problem where the container for a tweet would appear empty but upon inspecting the html element we could see the tweet but it wouldn't appear as it had clashed previously with a matching " or ' or unescaped \. These were minor difficulties but painful and annoying nontheless. <br>
-		We worked with twitters streaming and search api, the streaming api is used to collect the training data and the search api is used in the application to fetch the recent tweets. On each tweet we have to do some processing to output it in the format that we want such as link recognition and rendering emoji used in the tweets via the twemoji library. We use a seperate function to convert the date returned by twiter for each tweet into something more redable such as 1 min ago or 9 hours ago etc. The main difficulty in this application was the sentiment analysis algorithm on which we spent a considerbale amount of time on, tweaking and experimenting to try to increase its accuracy and at the same time make sure it is not being over-trained and can generalise well. We also introduced the "add-and-delete" functionality in the settings page. The user can delete and add multiple topics simultaneously, for example he user could delete 5 topics and add 10 more in one go. Traditional add and delete mechanism would have the user delete and elements one at a time.   
+		<p>The design pattern of the dashboard across the whole application is consistent. The user gets results in the same ouput format whether he/she chooses good, bad, neutral, all, next or previous option, thus making the user experience worthwhile.</p>
+		<p>There is another design pattern that has already been highlighted. Next to each user's username and password in the online database, we store another field "TwitterQueryString". As a result this is unique to each user. Each word separated by a whitespace character is used to fetch search results from the Twitter Search API. So essentially, the search paramters that the Control Panel allows users to play with are the whitespace separated words from TwitterQueryString field in the database.</p>
 		<h1>Sources</h1>
 		Bag of Words
 		<ul>
+			<li>  <a target="_blank" href = "https://www.youtube.com/watch?v=ytUHvMNnzZk">https://www.youtube.com/watch?v=ytUHvMNnzZk </a>(Most helpful!)</li>
 			<li>  <a  target="_blank" href = "http://en.wikipedia.org/wiki/Bag-of-words_model">http://en.wikipedia.org/wiki/Bag-of-words_model</a></li>
 			<li>  <a target="_blank" href = "https://www.youtube.com/watch?v=iGZpJZhqEME">https://www.youtube.com/watch?v=iGZpJZhqEME</a></li>
 			<li>  <a target="_blank" href = "https://www.youtube.com/watch?v=QqT7fPVh2yE">https://www.youtube.com/watch?v=QqT7fPVh2yE</a></li>
-			 <li>  This is the one that was most helpful <a target="_blank" href = "https://www.youtube.com/watch?v=ytUHvMNnzZk">https://www.youtube.com/watch?v=ytUHvMNnzZk</a></li>
 
 		</ul>
 		<a target="_blank" href = "http://nlp.stanford.edu/sentiment/">Stanford NLP Library </a> <br>
 		<a target="_blank" href = "http://sentiment.vivekn.com/docs/api/">Batch Api</a><br>
 		<a target="_blank" href= "http://www.datumbox.com/">DatumBox </a>
-		<h1><a  target="_blank" href = "Technical documentation.pdf">System/Technical Documentation</a></h1>
-		<h1><a target="_blank" href = "user doc.pdf">User Documentation</a></h1>
+		<br><br><br><br>
+
+		<div class = "col-lg-12">
+			<div class = "col-lg-7">
+				
+				<a  target="_blank" href = "Technical documentation.pdf" class = "btn btn-primary btn-blcok"><h1>System/Technical Documentation</h1></a>
+			</div>
+			<div class = "col-lg-5">
+				<a target="_blank" href = "user doc.pdf" class = "btn btn-info btn-blcok"><h1>User Documentation</h1></a>
+			</div>
+		</div>
+		<br><br><br><br>
+
 	</div>
 	
 
@@ -66,7 +79,8 @@
 </div>
 <div class = "navbar navbar-default navbar-fixed-bottom">
 	<div class = "container">
-		<p class = "navbar-text pull-left">2014 Developed by ATOS 4 UCL Team<br>All Rights Reserved</p>
+		<p class = "navbar-text">2014 Developed by ATOS 4 UCL Team<br>All Rights Reserved</p>
+			<a href="http://youtube.com" class = "pull-right"><img style="padding: 0em;width: 6em; height: 3em; float: right; margin-top: 1em"src="youtube.png"></a>
 	</div>
 </div>
 
