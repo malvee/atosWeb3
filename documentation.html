@@ -11,12 +11,13 @@
 		<div class = "container">
 
 			<a href = "index.html" class = "navbar-brand" class = "active">
-				<img class = "navbar-brand" class = "active" style="padding: 0.5em;width: 5em; height: 3.8em; float: left; margin-top: -1.25em" src="logo.jpg">
+				<!--<img class = "navbar-brand" class = "active" style="padding: 0.5em;width: 5em; height: 3.8em; float: left; margin-top: -1.25em" src="logo.jpg">-->
+				<img class = "navbar-brand" class = "active" style="padding: 0.3em;width: 4.5em; height: 3.5em; float: left; margin-top: -1.25em" src="logo.jpg">
 			</a>
 			
 			<a href = "team.html" class = "navbar-brand" class = "active">Team</a>
 			<a href = "bagOfWords/" class = "navbar-brand" class = "active">Project</a>
-			<a href = "requirementsBackground.html" class = "navbar-brand" class = "active">Requirements Background</a>
+			<a href = "requirementsBackground.html" class = "navbar-brand" class = "active">Requirements</a>
 			<a href = "documentation.html" class = "navbar-brand" class = "active">Documentation</a>
 			<a href = "developmentPlan.html" class = "navbar-brand" class = "active">Development Plan</a>
 			
@@ -30,14 +31,17 @@
 	</div>
 
 	
-	<div class = "col-lg-10" style = "margin-left: 5em; margin-right: 5em; margin-bottom: 7em;">
+	<div class = "col-lg-9" style = "margin-left: 9em; margin-right: 5em; margin-bottom: 7em;">
 		
-		<h1>Technical Achievement</h1>
+		<h1>Technical Achievements</h1>
 		The biggest technical achievement that we have is the bag of words algorithm which was made from scratch. The entire algorithm along with all the files related to the algorithm is self-contained within 15 files.<br> The code base is fairly complex with over 2400 hundred line of hand written code. Handling javascript within php within html becomes a bit trick and managing " and ' becomes very confusing and frustrating. The mix-up of " and ' while being passed to and from javascript and php caused the missing box problem where the container for a tweet would appear empty but upon inspecting the html element we could see the tweet but it wouldn't appear as it had clashed previously with a matching " or ' or unescaped \. These were minor difficulties but painful and annoying nontheless. <br>
 		We worked with twitters streaming and search api, the streaming api is used to collect the training data and the search api is used in the application to fetch the recent tweets. On each tweet we have to do some processing to output it in the format that we want such as link recognition and rendering emoji used in the tweets via the twemoji library. We use a seperate function to convert the date returned by twiter for each tweet into something more redable such as 1 min ago or 9 hours ago etc. The main difficulty in this application was the sentiment analysis algorithm on which we spent a considerbale amount of time on, tweaking and experimenting to try to increase its accuracy and at the same time make sure it is not being over-trained and can generalise well. We also introduced the "add-and-delete" functionality in the settings page. The user can delete and add multiple topics simultaneously, for example he user could delete 5 topics and add 10 more in one go. Traditional add and delete mechanism would have the user delete and elements one at a time.    
 		<h1>Working and Technical Details</h1>
 		When the user goes to the application url they are prompted with a login screen, here the user has to  enter the username and password and this will be authenticated agaisnt an online databse. If the authentication is successfull the user is taken to the main page where the server looks up the username in the databse and retrieves the set of 100 tweets that the user has specified they are interested in. These 100 tweets are then analysed by the bag of words algorithm and each is given a sentiment and a score. Depending on the sentiment and the score a color is chosen for the container in which the tweet is going to be displayed. The tweet is parsed to identify inks and emoji and these are rendered properly. The profile picture and time of tweet is displayed too. 
 		<br> The technical details of the entire working of the application have been explained in-depth in the <a target="_blank" href = "Technical documentation.pdf">technical documentation </a> including explanation of each file, its part in the overall application, how to extend the algorithm or re-train the model etc.
+		<h1>Use of Design Patterns</h1>
+		The biggest technical achievement that we have is the bag of words algorithm which was made from scratch. The entire algorithm along with all the files related to the algorithm is self-contained within 15 files.<br> The code base is fairly complex with over 2400 hundred line of hand written code. Handling javascript within php within html becomes a bit trick and managing " and ' becomes very confusing and frustrating. The mix-up of " and ' while being passed to and from javascript and php caused the missing box problem where the container for a tweet would appear empty but upon inspecting the html element we could see the tweet but it wouldn't appear as it had clashed previously with a matching " or ' or unescaped \. These were minor difficulties but painful and annoying nontheless. <br>
+		We worked with twitters streaming and search api, the streaming api is used to collect the training data and the search api is used in the application to fetch the recent tweets. On each tweet we have to do some processing to output it in the format that we want such as link recognition and rendering emoji used in the tweets via the twemoji library. We use a seperate function to convert the date returned by twiter for each tweet into something more redable such as 1 min ago or 9 hours ago etc. The main difficulty in this application was the sentiment analysis algorithm on which we spent a considerbale amount of time on, tweaking and experimenting to try to increase its accuracy and at the same time make sure it is not being over-trained and can generalise well. We also introduced the "add-and-delete" functionality in the settings page. The user can delete and add multiple topics simultaneously, for example he user could delete 5 topics and add 10 more in one go. Traditional add and delete mechanism would have the user delete and elements one at a time.   
 		<h1>Sources</h1>
 		Bag of Words
 		<ul>
