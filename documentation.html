@@ -42,8 +42,27 @@
 		<p>These 100 tweets are then analysed by the Bag Of Words algorithm and each tweet is given a sentiment and a score. Depending on the sentiment and score each tweet container is given a sentiment colour and sentiment shade respectively. The tweet is also parsed to identify hyperlinks and emoticons. These are displayed in the tweet text along with profile picture of the tweet author and time elapsed since tweet creation.</p>
 		Comprehensive technical details of the entire application can be found in the <a target="_blank" href = "Technical documentation.pdf">Technical Documentation </a> including explanation of each file, its part in the overall application and how to extend the algorithm or re-train the model etc.
 		<h1>Use of Design Patterns</h1>
-		<p>The design pattern of the dashboard across the whole application is consistent. The user gets results in the same ouput format whether he/she chooses good, bad, neutral, all, next or previous option, thus making the user experience worthwhile.</p>
-		<p>There is another design pattern that has already been highlighted. Next to each user's username and password in the online database, we store another field "TwitterQueryString". As a result this is unique to each user. Each word separated by a whitespace character is used to fetch search results from the Twitter Search API. So essentially, the search paramters that the Control Panel allows users to play with are the whitespace separated words from TwitterQueryString field in the database.</p>
+		We followed a modified Strategy Pattern which allowed re-use of Session data over some period of time. In order to allow the user to filter the tweets it would be a waste to re-fetch the data and only display the selected sentiment. Instead the data is cached in a Session and passed to every other page requesting the data. So there is only copy of the data which is passed by reference and each page displays a sub-set of the data that the specific page is interested in. 
+		<ul>
+			<br>
+			<li>
+				Generator files:
+				<br>
+				Each part of the algorithm has a specific generator file that produces part of the algorithm. For example, "createNegativeArray.php", "createPositiveArray.php", "createStopArray.php", "trainModel.php" etc are examples of generator files. These files act on their corresponding data and generate the the serialized information needed by the algorithm.
+			</li>
+			<br>
+			<li>
+				Decoupling:
+				<br>
+				Changes in the algorithm are reflected via the master-slave relationship. The master files of the project are located in the bagOfWordsTrainer directory and using the generator files output a single change made in the master directory allows the changes to be reflected upon on the whole application. For example: if we add more training data to the training dataset then the generator file will create the new serialized information and update the algorithms data-model. 
+			</li>
+				<br>
+				<li>
+					Smart pre-processing:
+					<br>
+					Instead of searching for stop words in each tweet, these words are filtered out at the data-model generation stage. This in-turn avoids re-computation and allows faster execution time. 
+				</li>
+		</ul>
 		<h1>Sources</h1>
 		Bag of Words
 		<ul>
