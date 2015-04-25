@@ -64,7 +64,7 @@
 				 </li>
 				 <li>
 				 <h3>Phase-5 Stanford NLP library:</h3>
-				 <p>Stanford has an excellent <a target="_blank" href = "http://nlp.stanford.edu/sentiment/" target="_blank">Natural Language Processing framework</a>. We packaged and modified the library into a single <a href= "senti.jar" download>jar file</a> that takes as argument the name of a file and the contents of the file is newline-delimited tweets. The output of this jar file is the ocrresponding score of each tweet. To run the <a href= "senti.jar" download>jar file</a> issue the command "java -cp senti.jar sentiment.analysis.Main <nameOfFile>.txt". The accuracy of the stanford NLP library is 85% and its not surprising because this library has been created by the best in the field. The problem here too is with speed. To classify 100 tweets the stanford NLP libarary takes 15 seconds and more compared to less than 1 second with our modified bag of words algorithm. We suspect that the performance hit is due to using php's exec function to run the jar on the server but there is no workaround as the only way to comply with our framework and run the jar file online is through this mechanism. Due to this poor performance we opted to use our own algorithm as it is very accurate and extremely fast. There is also the scope of extending the alogrithm and re-training the model which is not possible with using the pre-defined stanford library.</p>
+				 <p>Stanford has an excellent <a  href = "http://nlp.stanford.edu/sentiment/" target="_blank">Natural Language Processing framework</a>. We packaged and modified the library into a single <a target="_blank" href= "https://drive.google.com/file/d/0B5lKNyUsNWEFMFhwVXR1d2lxX0k/view?usp=sharing">jar file</a> that takes as argument the name of a file and the contents of the file is newline-delimited tweets. The output of this jar file is the ocrresponding score of each tweet. To run the <a target="_blank" href= "https://drive.google.com/file/d/0B5lKNyUsNWEFMFhwVXR1d2lxX0k/view?usp=sharing" >jar file</a> issue the command "java -cp senti.jar sentiment.analysis.Main <nameOfFile>.txt". The accuracy of the stanford NLP library is 85% and its not surprising because this library has been created by the best in the field. The problem here too is with speed. To classify 100 tweets the stanford NLP libarary takes 15 seconds and more compared to less than 1 second with our modified bag of words algorithm. We suspect that the performance hit is due to using php's exec function to run the jar on the server but there is no workaround as the only way to comply with our framework and run the jar file online is through this mechanism. Due to this poor performance we opted to use our own algorithm as it is very accurate and extremely fast. There is also the scope of extending the alogrithm and re-training the model which is not possible with using the pre-defined stanford library.</p>
 				 The setiment and score relationship of the output of the jar file is as follows:
 				 <br>
 				 <ul>
@@ -74,7 +74,7 @@
 				 		<li>4 : Very Positive</li>
 				 </ul>
 				 <br>
-				 To download the jar file <a href= "senti.jar" download>click here</a>.
+				 To download the jar file <a target="_blank" href= "https://drive.google.com/file/d/0B5lKNyUsNWEFMFhwVXR1d2lxX0k/view?usp=sharing" >click here</a>.
 				</li>
 
 				
@@ -88,7 +88,7 @@
 					<br>
 					These color coding helps the user to identify the extreme tweets quckly and enables faster response which would not have been possible otherwise.
 					<li><h3>Execution speed</h3></li>
-					<br>
+					
 					On average an application being supported by the bag of words algorithm produces results under a second for a batch of 100 tweets. In comparison Stanfords NLP library ranges from 15-20 seconds to classify the same amount. It is evident that this delay is unacceptable for any real-time application and was the major cause of choosing the bag of words algorithm over it.
 
 				</ul>
