@@ -138,21 +138,18 @@
                 			<p>Selenium is an open source Browser based Test Automation Software. It is a robust set of suite of tools which supports rapid development of test automation for web-based applications. It has support for many other languages than just HTML 5.</p>
 
                 			<p>The Selenium IDE is very user-friendly. It has execution commands, a record button and Web based test runner option. It also has reference and log tabs where user can see details about the  command currently being run and progress of the test respectively.</p>
-                			<h4>Genral Commands</h4>
-                			<ul>
-  						<li>cliking a link- click or clickAndWait commands</li>
-  						<li>entering values- type command</li>
-  						<li>selecting options from a drop-down listbox- select command</li>
-  						<li>click checkboxes or radio buttons- click command</li>
-						</ul>
+                			
 						<h4>How did we test?</h4>
-                			<p>First of all, Selenium IDE for Mozilla Firefox was installed. As soon as the localhost was fired up, the Selenium IDE started recording the sequence user's actions and clicks in the test suite. As a user, the team went through all use cases after which the test suite was run to start automated testing.</p>
-                		<h4>Errors & Debugging</h4>
+                			<p>First of all, Selenium IDE for Mozilla Firefox was installed. The Selenium IDE started recording the sequence of user's actions and clicks in the test suite. As a user, the team went through all use cases after which the test suite was run to start automated testing. Some of the tests include:</p>
                 			<ul>
-  						<li>timeout - The actual application was receiving a session timeout because the Sentiment Analysis API took too long to respond.</li>
-  						<li>The team fixed this error by manually colour coding the tweets if the call to Sentiment Analysis API takes too long.</li>
-  						<li>There were a lot of hyperlink errors found during testing.</li>
-						</ul>
+                				<li>Check whether 100 tweets are displayed on clicking login, reload, back and next. </li>
+                				<li>Check that the tweet containers are not empty after clicking login, reload, back and next. </li>
+                				<li>Check hyperlinks within tweets. </li>
+                				<li>Check that there are no hexdecimal codes within tweet texts. </li>
+                				<li>Check time elapsed since tweet creation of next tweets is greater than those of previous tweets. </li>
+                				<li>Check whether all data cells are equal to what they were on login after clicking the back button on Settings page</li>
+                				<li>Check that the data cells on reload page have newer time elapsed since tweet creation than the ones on login. </li>
+                			</ul>
                             <h4>Testing Results</h4>
                            		<p>Here is a link to the comprehensive testing carried out using Selenium: <a href="selenium-results.html">Selenium Complete Test</a></p>      
                       	</div>
